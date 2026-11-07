@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StudyQuest — исследуй острова знаний, изучай школьные предметы и открывай новые горизонты.">
+    <meta name="theme-color" content="#DFF3FF">
+    <title>StudyQuest — острова знаний</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <!-- Переиспользуемые векторные иллюстрации островов. -->
+  <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="rock" x2=".3" y2="1"><stop stop-color="#B1A394"/><stop offset="1" stop-color="#6E7981"/></linearGradient>
+      <linearGradient id="grass" x2=".8" y2="1"><stop stop-color="#ADD982"/><stop offset="1" stop-color="#65A74D"/></linearGradient>
+      <linearGradient id="glass" x2="1" y2="1"><stop stop-color="#E0F7EC"/><stop offset="1" stop-color="#70B6B0"/></linearGradient>
+      <symbol id="island" viewBox="0 0 360 260">
+        <ellipse cx="180" cy="243" rx="76" ry="8" fill="#8AB4C3" opacity=".17"/>
+        <path d="M51 160 88 202 124 209 174 244 208 223 237 222 287 185 310 157Z" fill="url(#rock)"/>
+        <path d="m88 178 36 31 19-23 31 58-8-65 42 44 12-42 17 41 17-46" fill="#C6B7A1" opacity=".55"/>
+        <path d="m51 160 19 27 15-20 18 27 16-25 17 18 29-10 29 13 21-17 16 12 24-20 22 10 23-18-5-18Z" fill="#39734A"/>
+        <ellipse cx="180" cy="156" rx="132" ry="36" fill="url(#grass)"/>
+        <ellipse cx="180" cy="148" rx="110" ry="24" fill="#B8DB8E" opacity=".6"/>
+        <path d="m168 175 34-26h39" fill="none" stroke="#E6D4A0" stroke-width="12"/>
+        <g fill="#39734A"><path d="m72 148 11-34 11 34Z"/><path d="m265 147 13-39 13 39Z"/><path d="m244 157 9-28 10 28Z"/></g>
+        <g fill="#FFF8E8"><circle cx="104" cy="163" r="3"/><circle cx="114" cy="157" r="2"/><circle cx="260" cy="160" r="3"/></g>
+        <path d="m96 189-5 15m180-25-8 17m-122 4 3 19" stroke="#78B85A" stroke-width="5" stroke-linecap="round"/>
+        <path d="m60 209 5 8-8 7-5-8Zm230-11 8 5-5 9-7-4Z" fill="#A2B8AF"/>
+      </symbol>
+      <symbol id="academy" viewBox="0 0 360 260">
+        <use href="#island"/><path d="M116 146V82h124v64" fill="#F5E8CB"/><path d="M109 83 178 43l70 40Z" fill="#7862B3"/>
+        <path d="M134 142V94m15 48V94m23 48V94m15 48V94m23 48V94m15 48V94" stroke="#D4C39F" stroke-width="7"/>
+        <path d="M108 146h140m-145 8h150" stroke="#F9F0D9" stroke-width="10"/>
+        <circle cx="178" cy="70" r="12" fill="#F3D68A"/><text x="178" y="76" text-anchor="middle" fill="#59458E" font-size="21" font-family="Georgia">π</text>
+        <path d="m92 153-12-21 13-23 13 24Zm167 3-10-20 11-25 14 26Z" fill="#927AC5"/><path d="m93 109v44m167-42v45" stroke="#D4C7EC" stroke-width="2"/>
+        <path d="M178 42V22m1 0 24 7-24 7" stroke="#D6A43B" stroke-width="3" fill="#D6A43B"/>
+      </symbol>
+      <symbol id="observatory" viewBox="0 0 360 260">
+        <use href="#island"/><path d="M130 147V91h102v56" fill="#EEDDC0"/><path d="M123 93a58 58 0 0 1 116 0Z" fill="#397DB7"/>
+        <path d="M181 37v54m-34 0c0-30 12-51 34-54 24 7 35 29 35 54" fill="none" stroke="#82B4D5" stroke-width="4"/>
+        <path d="M126 96h110" stroke="#D6A43B" stroke-width="5"/><path d="M170 148v-27a12 12 0 0 1 24 0v27" fill="#193B56"/>
+        <path d="m99 134 35-36m-23 18 17 24m-18-23-6 28" stroke="#8C7354" stroke-width="5"/>
+        <path d="m107 111 29-30 12 12-31 29Z" fill="#D6A43B"/><path d="m133 82 7-8 15 14-7 8Z" fill="#193B56"/>
+        <circle cx="255" cy="91" r="5" fill="#D6A43B"/><path d="m261 62 3 8 8 3-8 3-3 8-3-8-8-3 8-3Z" fill="#D6A43B"/>
+      </symbol>
+      <symbol id="library" viewBox="0 0 360 260">
+        <use href="#island"/><path d="M124 149V94h111v55" fill="#F2DEBF"/><path d="m116 95 66-42 61 42Z" fill="#A34F61"/>
+        <path d="M112 148V81h27v67m78 0V81h28v67" fill="#F7EBCF"/><path d="m107 82 18-33 19 33m68 0 19-33 19 33" fill="#A34F61"/>
+        <path d="M168 148v-27a13 13 0 0 1 26 0v27" fill="#72414B"/><path d="M151 96h15v16h-15m47-16h15v16h-15" fill="#D6A43B"/>
+        <path d="M145 128q18-6 35 4 18-10 35-4v25q-18-5-35 4-18-9-35-4Z" fill="#FFF8E8" stroke="#A98F60" stroke-width="2"/><path d="M180 132v25" stroke="#A98F60" stroke-width="2"/>
+      </symbol>
+      <symbol id="garden" viewBox="0 0 360 260">
+        <use href="#island"/><path d="M123 148V96a58 58 0 0 1 116 0v52Z" fill="url(#glass)" stroke="#39734A" stroke-width="4"/>
+        <path d="M181 39v109m-58-52h116m-116 26h116m-87 26V96c0-29 12-51 29-57 17 6 29 28 29 57v52" fill="none" stroke="#4D927E" stroke-width="3"/>
+        <path d="M170 148v-27a11 11 0 0 1 22 0v27" fill="#FFF8E8" stroke="#39734A" stroke-width="3"/>
+        <path d="M104 151v-35m0 18q-23 0-20-20 20 0 20 20m0-10q0-22 20-22 1 20-20 22" fill="#39734A" stroke="#39734A" stroke-width="3"/>
+        <path d="m248 114v13l-10 21q-1 6 7 6h14q8 0 5-6l-10-21v-13m-8 0h10" fill="#D9F3E3" stroke="#2D8C80" stroke-width="3"/><path d="M243 144h17l4 7h-23Z" fill="#42B8A5"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="header">
+    <a href="#" class="brand" aria-label="StudyQuest — главная"><span class="brand-mark">✦</span><span>Study<span class="brand-accent">Quest</span><small>ОСТРОВА ЗНАНИЙ</small></span></a>
+    <nav class="navigation" aria-label="Основная навигация"><a class="nav-current" href="#world">Карта мира</a><a href="#routes">Предметы</a><a href="#guide">Как играть</a></nav>
+    <details class="player-menu"><summary><span class="avatar">И</span><span class="player-label">Исследователь<small>Уровень 1 · 0 XP</small></span><span>⌄</span></summary><div class="player-popover"><strong>Твоё приключение впереди</strong><p>Пройди первую тему, чтобы начать собирать опыт и награды.</p><small>Профиль появится в игровой версии.</small></div></details>
+  </header>
+
+  <main id="main">
+    <section class="world-section" id="world" aria-labelledby="world-title">
+      <div class="hero-copy"><span class="eyebrow"><span class="small-star">✦</span> ТВОЁ БОЛЬШОЕ ПРИКЛЮЧЕНИЕ</span><h1 id="world-title">Маленький шаг.<br>Целый <em>мир знаний.</em></h1><p>Исследуй острова, решай задания и открывай новые горизонты. Какой мир ты выберешь сегодня?</p><a class="button button-primary" href="#routes">Начать приключение <span aria-hidden="true">↗</span></a><div class="hero-footnote"><span>✧</span> Четыре мира. Бесконечное любопытство.</div></div>
+      <div class="map" aria-label="Острова школьных предметов">
+        <div class="map-caption"><span>✧</span> АРХИПЕЛАГ ЗНАНИЙ <span>01 — 04</span></div>
+        <span class="cloud cloud-one" aria-hidden="true"></span><span class="cloud cloud-two" aria-hidden="true"></span><span class="cloud cloud-three" aria-hidden="true"></span>
+        <svg class="map-path" viewBox="0 0 700 540" aria-hidden="true"><path d="M170 155Q350 80 520 160T480 400Q340 490 175 395T170 155"/></svg>
+        <a class="island-card math" href="#math"><span class="island-number">01</span><svg class="island-art" viewBox="0 0 360 260" aria-hidden="true"><use href="#academy"/></svg><span class="island-name"><span class="subject-symbol">π</span> Математика <span class="island-arrow">↗</span></span><span class="island-description">Логика открывает двери</span></a>
+        <a class="island-card physics" href="#physics"><span class="island-number">02</span><svg class="island-art" viewBox="0 0 360 260" aria-hidden="true"><use href="#observatory"/></svg><span class="island-name"><span class="subject-symbol">⚛</span> Физика <span class="island-arrow">↗</span></span><span class="island-description">Узнай, как устроен мир</span></a>
+        <a class="island-card russian" href="#russian"><span class="island-number">03</span><svg class="island-art" viewBox="0 0 360 260" aria-hidden="true"><use href="#library"/></svg><span class="island-name"><span class="subject-symbol">А</span> Русский язык <span class="island-arrow">↗</span></span><span class="island-description">В каждом слове — история</span></a>
+        <a class="island-card science" href="#science"><span class="island-number">04</span><svg class="island-art" viewBox="0 0 360 260" aria-hidden="true"><use href="#garden"/></svg><span class="island-name"><span class="subject-symbol">❧</span> Естествознание <span class="island-arrow">↗</span></span><span class="island-description">Удивительное рядом</span></a>
+        <span class="map-north" aria-hidden="true">N<br>✧</span>
+      </div>
+    </section>
+
+    <section class="dashboard" aria-label="Задание и прогресс">
+      <article class="quest-card"><span class="quest-icon" aria-hidden="true">⚑</span><div><span class="eyebrow">ПЕРВЫЙ КВЕСТ</span><h2>Отправная точка</h2><p>Выбери остров и познакомься с первой темой.</p></div><a href="#routes" class="text-link">Выбрать предмет <span aria-hidden="true">→</span></a></article>
+      <article class="progress-card"><div class="progress-heading"><h2>Твоё путешествие</h2><span>Уровень 1</span></div><div class="xp-label"><span>Начинающий исследователь</span><strong>0 <span>/ 100 XP</span></strong></div><div class="xp-track" role="progressbar" aria-label="Опыт до следующего уровня" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div><p><span aria-hidden="true">✦</span> Впереди — первая звезда!</p></article>
+    </section>
+
+    <section class="routes section-container" id="routes" aria-labelledby="routes-title"><div class="section-heading"><div><span class="eyebrow">С ЧЕГО НАЧНЁМ?</span><h2 id="routes-title">У каждого острова — свой путь</h2></div><span class="section-note">Будущие учебные маршруты</span></div>
+      <div class="topic-grid">
+        <article class="topic-card math" id="math"><span class="topic-icon">π</span><h3>Математика</h3><p>Разгадывай закономерности и находи красивые решения.</p><details><summary>Посмотреть темы <span>+</span></summary><ul><li>Квадратные уравнения</li><li>Теорема Пифагора</li></ul><p class="topic-status">Задания готовятся</p></details></article>
+        <article class="topic-card physics" id="physics"><span class="topic-icon">⚛</span><h3>Физика</h3><p>Превращай любопытство в открытия и проверяй законы природы.</p><details><summary>Посмотреть темы <span>+</span></summary><ul><li>Скорость и движение</li><li>Законы Ньютона</li></ul><p class="topic-status">Задания готовятся</p></details></article>
+        <article class="topic-card russian" id="russian"><span class="topic-icon">А</span><h3>Русский язык</h3><p>Исследуй силу слов и научись выражать мысли точно.</p><details><summary>Посмотреть темы <span>+</span></summary><ul><li>Орфография</li><li>Пунктуация</li></ul><p class="topic-status">Задания готовятся</p></details></article>
+        <article class="topic-card science" id="science"><span class="topic-icon">❧</span><h3>Естествознание</h3><p>Загляни в мир растений и узнай секреты живой природы.</p><details><summary>Посмотреть темы <span>+</span></summary><ul><li>Мир растений</li><li>Экосистемы</li></ul><p class="topic-status">Задания готовятся</p></details></article>
+      </div>
+    </section>
+
+    <section class="guide section-container" id="guide" aria-labelledby="guide-title"><div><span class="eyebrow">УЧЁБА СТАНОВИТСЯ ПРИКЛЮЧЕНИЕМ</span><h2 id="guide-title">Большие открытия<br>начинаются с любопытства.</h2><p>Будущий маршрут каждой темы — три простых шага.</p></div><ol class="steps"><li><span>01</span><div><h3>Открой новое</h3><p>Короткая теория и понятные примеры.</p></div></li><li><span>02</span><div><h3>Попробуй свои силы</h3><p>Задания, подсказки и разбор ответов.</p></div></li><li><span>03</span><div><h3>Покори вершину</h3><p>Финальное испытание и заслуженная награда.</p></div></li></ol></section>
+  </main>
+  <footer class="footer"><a class="footer-brand" href="#">✦ StudyQuest</a><p>Каждое открытие делает твой мир больше.</p><span>Создано для любопытных</span></footer>
+</body>
+</html>

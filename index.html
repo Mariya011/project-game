@@ -1,12 +1,92 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-type="software">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Проект</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#DFF3FF">
+  <meta name="description" content="StudyQuest — карта твоих учебных приключений. Выбирай остров и исследуй школьные предметы.">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="gaming">
+  <title>Карта мира — StudyQuest</title>
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Перейти к карте</a>
+  <svg aria-hidden="true" class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m16 8-2.5 5.5L8 16l2.5-5.5Z"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3Zm6-3v15m6-12v15"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-1-9 1Zm0 0v15M6 8h3m6 0h3M6 12h3m6 0h3"/></symbol>
+    <symbol id="i-cup" viewBox="0 0 24 24"><path d="M7 3h10v6a5 5 0 0 1-10 0Zm0 2H3v3a4 4 0 0 0 4 4m10-7h4v3a4 4 0 0 1-4 4m-5 2v5m-4 2h8"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4 2c-1 .5-1.5 1-1.5 2m0 3h.01"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4c5-4 9 4 14 0v11c-5 4-9-4-14 0"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol>
+    <symbol id="i-motion" viewBox="0 0 24 24"><path d="M3 7h8M3 12h5M3 17h8m4-13 6 8-6 8"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m8 5 7 7-7 7"/></symbol>
+    <symbol id="i-atom" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 3C8 2 2 9 6 16c7 5 14-1 14-13ZM4 21l11-11"/></symbol>
+    <symbol id="i-math" viewBox="0 0 24 24"><path d="M4 6h16M8 6v12m8-12v10q0 3 4 2"/></symbol>
+    <symbol id="i-feather" viewBox="0 0 24 24"><path d="m3 21 12-12M7 17C3 8 13 1 21 3c2 8-5 18-14 14Zm6-6 5 1M9 15l6 1"/></symbol>
+  </defs></svg>
 
+  <aside class="sidebar" aria-label="Боковая панель">
+    <a class="brand" href="#world" aria-label="StudyQuest — карта мира"><span class="brand-emblem"><svg aria-hidden="true" class="icon"><use href="#i-compass"/></svg></span><span>StudyQuest<span class="brand-subtitle">Острова знаний</span></span></a>
+    <nav class="side-nav" aria-label="Основная навигация">
+      <a class="nav-link is-active" href="#world"><svg aria-hidden="true" class="icon"><use href="#i-map"/></svg><span>Карта мира</span><span class="nav-dot"></span></a>
+      <a class="nav-link" href="#routes"><svg aria-hidden="true" class="icon"><use href="#i-book"/></svg><span>Мои предметы</span></a>
+      <a class="nav-link" href="#achievements"><svg aria-hidden="true" class="icon"><use href="#i-cup"/></svg><span>Достижения</span></a>
+    </nav>
+    <div class="sidebar-bottom"><div class="explorer-note"><svg aria-hidden="true" class="icon"><use href="#i-spark"/></svg><p>У каждого открытия<br>есть своё начало.</p></div><a class="nav-link" href="#guide"><svg aria-hidden="true" class="icon"><use href="#i-help"/></svg><span>Как играть</span></a><span class="sidebar-footer">Твой мир становится больше.</span></div>
+  </aside>
+
+  <div class="workspace">
+    <header class="topbar"><div class="breadcrumb">Мир знаний <svg aria-hidden="true" class="icon"><use href="#i-chevron"/></svg><span>Карта островов</span></div><a class="player-link" href="#progress"><span class="player-name">Исследователь<small>Начало пути</small></span><span class="avatar"><svg aria-hidden="true" class="icon"><use href="#i-compass"/></svg></span></a></header>
+    <main id="main">
+      <section class="world" id="world" aria-labelledby="world-title">
+        <div class="page-heading"><div><h1 id="world-title">Куда отправимся сегодня?</h1><p>Выбери остров. Начни с того, что тебе интересно.</p></div><span class="world-badge"><span></span> 4 острова знаний</span></div>
+        <div class="explore-grid">
+          <div class="map-panel">
+            <div class="map-toolbar"><span><svg aria-hidden="true" class="icon"><use href="#i-compass"/></svg> Архипелаг знаний</span><button class="motion-toggle" type="button" aria-pressed="false" aria-label="Отключить анимацию"><svg aria-hidden="true" class="icon"><use href="#i-motion"/></svg><span>Анимация</span><span class="toggle-track"></span></button></div>
+            <div class="map-scene" aria-label="Выбор школьного предмета">
+              <svg class="travel-path" viewBox="0 0 800 600" aria-hidden="true"><path d="M195 170C420 50 640 140 600 330S280 590 190 410 90 230 195 170Z"/></svg>
+              <div class="cloud cloud-a" aria-hidden="true"></div><div class="cloud cloud-b" aria-hidden="true"></div><div class="cloud cloud-c" aria-hidden="true"></div>
+              <a class="island math" href="#math-topics" data-subject="math"><span class="island-picture" aria-hidden="true"></span><span class="island-label"><span class="subject-icon"><svg aria-hidden="true" class="icon"><use href="#i-math"/></svg></span><span>Математика</span><svg aria-hidden="true" class="icon island-arrow"><use href="#i-arrow"/></svg></span></a>
+              <a class="island physics" href="#physics-topics" data-subject="physics"><span class="island-picture" aria-hidden="true"></span><span class="island-label"><span class="subject-icon"><svg aria-hidden="true" class="icon"><use href="#i-atom"/></svg></span><span>Физика</span><svg aria-hidden="true" class="icon island-arrow"><use href="#i-arrow"/></svg></span></a>
+              <a class="island russian" href="#russian-topics" data-subject="russian"><span class="island-picture" aria-hidden="true"></span><span class="island-label"><span class="subject-icon"><svg aria-hidden="true" class="icon"><use href="#i-feather"/></svg></span><span>Русский язык</span><svg aria-hidden="true" class="icon island-arrow"><use href="#i-arrow"/></svg></span></a>
+              <a class="island science" href="#science-topics" data-subject="science"><span class="island-picture" aria-hidden="true"></span><span class="island-label"><span class="subject-icon"><svg aria-hidden="true" class="icon"><use href="#i-leaf"/></svg></span><span>Естествознание</span><svg aria-hidden="true" class="icon island-arrow"><use href="#i-arrow"/></svg></span></a>
+            </div>
+            <div class="map-bottom"><span><svg aria-hidden="true" class="icon"><use href="#i-map"/></svg> Большое путешествие начинается с одного острова</span><a href="#routes">Все темы <svg aria-hidden="true" class="icon"><use href="#i-arrow"/></svg></a></div>
+          </div>
+          <aside class="journey-rail" aria-label="Твоё путешествие">
+            <section class="progress-panel" id="progress" aria-labelledby="progress-title"><div class="rail-heading"><h2 id="progress-title">Твой прогресс</h2><svg aria-hidden="true" class="icon"><use href="#i-spark"/></svg></div><div class="rank"><span class="rank-medal"><svg aria-hidden="true" class="icon"><use href="#i-compass"/></svg></span><div><strong>Исследователь</strong><p>Уровень 1</p></div></div><div class="xp-label"><span>До нового уровня</span><strong>0 <span>/ 100 XP</span></strong></div><div class="xp-track" role="progressbar" aria-label="Опыт до второго уровня" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div><p class="progress-note">Первая награда ещё впереди.</p></section>
+            <section class="quest-panel" aria-labelledby="quest-title"><span class="quest-flag"><svg aria-hidden="true" class="icon"><use href="#i-flag"/></svg></span><h2 id="quest-title">Первый шаг</h2><p>У каждого исследователя есть свой первый остров. Найди свой.</p><a class="button button-primary" href="#world-title">Выбрать остров <svg aria-hidden="true" class="icon"><use href="#i-arrow"/></svg></a></section>
+            <div class="rail-tip"><svg aria-hidden="true" class="icon"><use href="#i-book"/></svg><p>Теория, практика и финальное испытание — в каждой теме.</p></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="routes" id="routes" aria-labelledby="routes-title"><div class="section-heading"><div><h2 id="routes-title">Твои учебные маршруты</h2><p>Открой предмет, чтобы посмотреть темы.</p></div><span class="content-status">Учебные задания в разработке</span></div>
+        <div class="route-list">
+          <details class="route math" id="math-topics"><summary><span class="subject-icon"><svg aria-hidden="true" class="icon"><use href="#i-math"/></svg></span><span class="route-name">Математика<small>Логика, закономерности и красивые решения</small></span><span class="topic-count">2 темы</span><svg aria-hidden="true" class="icon route-chevron"><use href="#i-chevron"/></svg></summary><div class="route-content"><div><span class="lesson-number">01</span><div><h3>Квадратные уравнения</h3><p>От формулы к решению</p></div><span class="lesson-status"><svg aria-hidden="true" class="icon"><use href="#i-lock"/></svg> Скоро</span></div><div><span class="lesson-number">02</span><div><h3>Теорема Пифагора</h3><p>Геометрия прямоугольного треугольника</p></div><span class="lesson-status"><svg aria-hidden="true" class="icon"><use href="#i-lock"/></svg> Скоро</span></div></div></details>
+          <details class="route physics" id="physics-topics"><summary><span class="subject-icon"><svg aria-hidden="true" class="icon"><use href="#i-atom"/></svg></span><span class="route-name">Физика<small>Открывай законы окружающего мира</small></span><span class="topic-count">2 темы</span><svg aria-hidden="true" class="icon route-chevron"><use href="#i-chevron"/></svg></summary><div class="route-content"><div><span class="lesson-number">01</span><div><h3>Скорость и движение</h3><p>Расстояние, время и скорость</p></div><span class="lesson-status"><svg aria-hidden="true" class="icon"><use href="#i-lock"/></svg> Скоро</span></div><div><span class="lesson-number">02</span><div><h3>Законы Ньютона</h3><p>Почему тела движутся</p></div><span class="lesson-status"><svg aria-hidden="true" class="icon"><use href="#i-lock"/></svg> Скоро</span></div></div></details>
+          <details class="route russian" id="russian-topics"><summary><span class="subject-icon"><svg aria-hidden="true" class="icon"><use href="#i-feather"/></svg></span><span class="route-name">Русский язык<small>Слова, правила и точность мысли</small></span><span class="topic-count">2 темы</span><svg aria-hidden="true" class="icon route-chevron"><use href="#i-chevron"/></svg></summary><div class="route-content"><div><span class="lesson-number">01</span><div><h3>Орфография</h3><p>Пиши уверенно и грамотно</p></div><span class="lesson-status"><svg aria-hidden="true" class="icon"><use href="#i-lock"/></svg> Скоро</span></div><div><span class="lesson-number">02</span><div><h3>Пунктуация</h3><p>Находи смысл между знаками</p></div><span class="lesson-status"><svg aria-hidden="true" class="icon"><use href="#i-lock"/></svg> Скоро</span></div></div></details>
+          <details class="route science" id="science-topics"><summary><span class="subject-icon"><svg aria-hidden="true" class="icon"><use href="#i-leaf"/></svg></span><span class="route-name">Естествознание<small>Замечай удивительное рядом</small></span><span class="topic-count">2 темы</span><svg aria-hidden="true" class="icon route-chevron"><use href="#i-chevron"/></svg></summary><div class="route-content"><div><span class="lesson-number">01</span><div><h3>Мир растений</h3><p>Как устроена зелёная жизнь</p></div><span class="lesson-status"><svg aria-hidden="true" class="icon"><use href="#i-lock"/></svg> Скоро</span></div><div><span class="lesson-number">02</span><div><h3>Экосистемы</h3><p>Всё в природе связано</p></div><span class="lesson-status"><svg aria-hidden="true" class="icon"><use href="#i-lock"/></svg> Скоро</span></div></div></details>
+        </div>
+      </section>
+
+      <section class="achievements" id="achievements" aria-labelledby="achievements-title"><div class="section-heading"><div><h2 id="achievements-title">Будущие открытия</h2><p>Маленькие победы складываются в большое путешествие.</p></div><span class="achievement-total">0 из 3 наград</span></div><div class="achievement-list"><div><span class="achievement-icon"><svg aria-hidden="true" class="icon"><use href="#i-flag"/></svg></span><h3>Первопроходец</h3><p>Пройди первую тему</p><span class="locked-caption">Пока закрыто</span></div><div><span class="achievement-icon"><svg aria-hidden="true" class="icon"><use href="#i-star"/></svg></span><h3>На отлично</h3><p>Заверши практику без ошибок</p><span class="locked-caption">Пока закрыто</span></div><div><span class="achievement-icon"><svg aria-hidden="true" class="icon"><use href="#i-compass"/></svg></span><h3>Новые горизонты</h3><p>Изучи темы трёх предметов</p><span class="locked-caption">Пока закрыто</span></div></div></section>
+
+      <section class="guide" id="guide" aria-labelledby="guide-title"><div class="section-heading"><div><h2 id="guide-title">Как проходит приключение</h2><p>Один маршрут — три шага к новым знаниям.</p></div></div><ol class="steps"><li><span>1</span><div><h3>Разберись в теме</h3><p>Короткая теория и понятный пример помогут вспомнить главное.</p></div></li><li><span>2</span><div><h3>Проверь себя</h3><p>Решай задания, используй подсказки и разбирай ошибки.</p></div></li><li><span>3</span><div><h3>Пройди испытание</h3><p>Закрепи знания в финальном тесте и получи награду.</p></div></li></ol></section>
+    </main>
+    <footer class="footer"><span>StudyQuest</span><p>Исследуй. Пробуй. Открывай.</p><a href="#world">Вернуться к карте <svg aria-hidden="true" class="icon"><use href="#i-arrow"/></svg></a></footer>
+  </div>
 </body>
 </html>
+
